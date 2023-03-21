@@ -1,0 +1,46 @@
+- ThemeContext ContextAPI létrehozása egy különálló fájlban
+
+App.js mint szülőkomponens
+-importáljuk a ThemeContext-ThemeContext
+-ThemeContext.Provider-el átadjuk a state-eket és a toggleTheme függvényt
+
+<ThemeContext.Provider value={{ theme, switchBtn, toggleTheme }}>
+
+- a return részben a komponens hívásoknál contextAPI esetében nem adunk át semmit
+
+
+Header komponens
+-importáljuk a ThemeContext-ThemeContext
+- destruktúrálással kiszedjük amit használni kell ebben a komponensben az átadottak közül
+
+const { theme, switchBtn, toggleTheme } = useContext(ThemeContext);
+
+- használjuk az átadott adatokat függvényeket a return részben
+
+
+Hero komponens
+-importáljuk a ThemeContext-ThemeContext
+- destruktúrálással kiszedjük amit használni kell ebben a komponensben az átadottak közül
+
+const { theme } = useContext(ThemeContext);
+
+- használjuk az átadott adatokat a return részben
+
+
+Footer komponens
+-importáljuk a ThemeContext-ThemeContext
+- destruktúrálással kiszedjük amit használni kell ebben a komponensben az átadottak közül
+
+const { theme } = useContext(ThemeContext);
+
+- használjuk az átadott adatokat a return részben
+
+
+
+PLUSSSSZ
+
+A Context-hez tartozó logikát kiszervezhetjük ugyancsak a Context fájba egy függvényként, majd onnan exportálni.
+
+- ha a Context az egész alkalmazásr érthető, akkor a Context-et az index.js-be is rakhatjuk, a fő App.js komponenshívás köré. 
+
+Ez esetben pl. a témakezelés miatt, de alkalmazhatjuk így ha az authentikációt akarjuk jelezni minden komonensnek. Jelezni minden komponensnek, hogy a user be van-e jelentkezve vagy sem.
